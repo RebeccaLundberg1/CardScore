@@ -1,0 +1,4 @@
+[
+  {"id": "chicago", "name": "Chicago", "state": true},
+  {"id": "plump", "name": "Plump", "state": false}
+]

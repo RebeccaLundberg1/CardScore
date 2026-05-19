@@ -1,0 +1,26 @@
+{
+  "id": "chicago",
+  "name": "Chicago",
+  "game_setup": {
+    "players": {
+      "label": "Antal spelare",
+      "values": [2, 3, 4, 5, 6],
+      "default": 2
+    },
+    "swaps": {
+      "label": "Antal byten"
+      "values": [2, 3],
+      "default": 2
+    }
+    "pitfalls": {
+      "label": "Fallgropar",
+      "default": true
+    },
+    "purch_stop": {
+      "label": "Köpstopp"
+      "default": true
+    }
+  },
+  "rules": {
+  }
+}
