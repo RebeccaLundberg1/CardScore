@@ -23,5 +23,5 @@ jobs:
       - name: Run typescript compiler
         run: npx tsc --noEmit
 
-
-
+      - name: Run ESLint
+        run: npx eslint . --ext -ts,.tsx
