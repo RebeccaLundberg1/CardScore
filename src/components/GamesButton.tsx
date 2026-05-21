@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 
 
-export default function GamesButton({ id, label }: { id: string, label: string }) {
+export default function GamesButton({ label }: { label: string }) {
   
   return (
     <Pressable className="bg-gray-400">
