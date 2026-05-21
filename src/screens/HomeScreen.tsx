@@ -1,10 +1,16 @@
 import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import GamesButton from "../components/GamesButton.tsx";
+import GamesButton from "../components/GamesButton";
 
 export default function HomeScreen() {
 
-  const games = require('../data/games.json')
+  type Game = {
+    id: string;
+    name: string;
+    state: boolean;
+  }
+
+  const games: Game[] = require('../data/games.json')
 
   return (
     <View className="flex-1 bg-white items-center justify-center">
