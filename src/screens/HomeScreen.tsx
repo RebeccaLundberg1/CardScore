@@ -6,19 +6,20 @@ import { useTheme } from '../context/ThemeContext';
 import games from '../data/games.json';
 
 export default function HomeScreen() {
-  const theme = useTheme();
+  const { theme, toggleTheme, isDark } = useTheme();
 
   return (
     <SafeAreaView className='flex-1' style={{ backgroundColor: theme.bg }}>
       <View className='flex-row justify-end'>
         <Switch className='m-4'
-          value={false}
+          value={isDark}
           trackColor={{ false: theme.secondary, true: theme.secondary }}
           ios_backgroundColor={theme.secondary}
-          thumbColor={theme.toggle}/>
+          thumbColor={theme.toggle}
+          onValueChange={toggleTheme}/>
       </View>
       <View className='flex-1 items-center justify-center'>
-        <Text className="text-6xl font-semibold">KortScore</Text>
+        <Text className='text-6xl font-semibold' style={{ color: theme.text }}>KortScore</Text>
       </View>
       <ImageBackground source={require('../../assets/images/notebook.png')} className='' style={{ flex: 2 }}>
         <View className='flex-1 items-center mt-20'>
