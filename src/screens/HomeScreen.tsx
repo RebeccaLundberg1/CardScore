@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native';
+import { View, Text, ImageBackground, Switch } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import GamesButton from '../components/GamesButton';
 import { useTheme } from '../context/ThemeContext';
@@ -8,16 +9,25 @@ export default function HomeScreen() {
   const theme = useTheme();
 
   return (
-    <View className='flex-1' style={{ backgroundColor: theme.bg }}>
+    <SafeAreaView className='flex-1' style={{ backgroundColor: theme.bg }}>
+      <View className='flex-row justify-end'>
+        <Switch className='m-4'
+          value={false}
+          trackColor={{ false: theme.secondary, true: theme.secondary }}
+          ios_backgroundColor={theme.secondary}
+          thumbColor={theme.toggle}/>
+      </View>
       <View className='flex-1 items-center justify-center'>
-        <Text className="text-xl font-bold">CardScore</Text>
+        <Text className="text-6xl font-semibold">KortScore</Text>
       </View>
-      <View className='flex-1 items-center justify-start'>
-        {games.filter(game => game.state == true).map(game => (
-          <GamesButton key={game.id} label={game.name} />
-        ))}
-      </View>
+      <ImageBackground source={require('../../assets/images/notebook.png')} className='' style={{ flex: 2 }}>
+        <View className='flex-1 items-center mt-20'>
+          {games.filter(game => game.state == true).map(game => (
+            <GamesButton key={game.id} label={game.name} />
+          ))}
+        </View>
+      </ImageBackground>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   )
 }
