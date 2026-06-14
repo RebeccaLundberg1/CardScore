@@ -8,16 +8,16 @@
       "default": 2
     },
     "swaps": {
-      "label": "Antal byten"
+      "label": "Antal byten",
       "values": [2, 3],
       "default": 2
-    }
+    },
     "pitfalls": {
       "label": "Fallgropar",
       "default": true
     },
     "purch_stop": {
-      "label": "Köpstopp"
+      "label": "Köpstopp",
       "default": true
     }
   },
