@@ -14,7 +14,7 @@ export default function GamesButton({ label }: { label: string }) {
         onPress={() => setIsVisible(true)}>
         <Text className='text-3xl text-black font-semibold' style={{ color: theme.text }}>{label}</Text>
       </Pressable>
-      <GameSetModal visible={isVisible} onClose={() => setIsVisible(false)} />
+      <GameSetModal name={label} visible={isVisible} onClose={() => setIsVisible(false)} />
     </>
   );
 }
