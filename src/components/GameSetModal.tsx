@@ -2,6 +2,7 @@ import { Modal, View, Text, Pressable, Switch } from 'react-native';
 import chigago from '../data/chicago.json';
 import { useState } from 'react';
 import RulesModal from './RulesModal';
+import Dropdown from './Dropdown';
 
 export default function GameSetModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
   
@@ -31,8 +32,12 @@ const [isVisible, setIsVisible] = useState(false)
               <View key={key} className='flex-row justify-between items-center w-full p-2 m-2'>
                 <Text className='text-xl'>{setting.label}</Text>
                 {setting.values ? (
-                  <Text>Dropdown</Text>
-                ) : ( 
+                  <Dropdown 
+                    data={setting.values} 
+                    value={settings[key]} 
+                    onValueChange={(val) => setSettings({...settings, [key]: val})}
+                  />
+                ) : (
                   <Switch
                     value={settings[key]}
                     onValueChange={(val) => setSettings({...settings, [key]: val})}
