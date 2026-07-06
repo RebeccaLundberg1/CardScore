@@ -21,6 +21,20 @@
       "default": true
     }
   },
-  "rules": {
-  }
+  "points": {
+    "pair": 1,
+    "two_pair": 2,
+    "three_of_kind": 3,
+    "straight": 4,
+    "flush": 5,
+    "full_house": 6,
+    "four_of_kind": 7,
+    "straight_flush": 11,
+    "royal_flush": 20,
+    "chigaco": 15,
+    "pitfalls": [ 27, 37 ],
+    "purch_stop": 46,
+    "goal": 52
+  },
+  "rules": "Man spelar Chicago med en vanlig kortlek utan jokrar och det går bra att spela på 2 eller fler spelare. Man börjar med att välja ut vem som börjar att dela ut, till exempel genom att dra ett kort där den som får högst börjar vara 'giv'."
 }
