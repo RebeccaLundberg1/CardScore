@@ -1,9 +1,7 @@
-import { Modal, View, Text, Pressable, ScrollView } from 'react-native';
-import chigago from '../data/chicago.json';
-import { useState } from 'react';
-import { chicagoRules } from '../data/chicagoRules';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Markdown from 'react-native-markdown-display';
+import { Modal, View, Text, Pressable, ScrollView } from 'react-native'
+import { chicagoRules } from '../data/chicagoRules'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import Markdown from 'react-native-markdown-display'
 
 /*
 * Modal that shows the rules for a specific game.
@@ -11,9 +9,9 @@ import Markdown from 'react-native-markdown-display';
 * @param visible - whether the modal is shown.
 * @param onClose - used to close the modal. 
 */
-export default function RulesModal({ name, visible, onClose }: { name: String, visible: boolean, onClose: () => void }) {
+export default function RulesModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
 
-  const games = {
+  const games: Record<string, string> = {
     "Chicago": chicagoRules
   }
 

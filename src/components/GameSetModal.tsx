@@ -1,22 +1,22 @@
-import { Modal, View, Text, Pressable, Switch } from 'react-native';
-import chigago from '../data/chicago.json';
-import { useState } from 'react';
-import RulesModal from './RulesModal';
-import Dropdown from './Dropdown';
+import { Modal, View, Text, Pressable, Switch } from 'react-native'
+import chigago from '../data/chicago.json'
+import { useState } from 'react'
+import RulesModal from './RulesModal'
+import Dropdown from './Dropdown'
 
 export default function GameSetModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
   
-const games = {
+const games: Record<string, any> = {
     "Chicago": chigago
   }
 
 const [ settings, setSettings ] = useState(
-  Object.entries(games[name].game_setup).reduce((acc, [key, setting]) => {
+  Object.entries(games[name].game_setup).reduce((acc, [key, setting]: [string, any]) => {
     if (setting.default !== undefined) { 
       acc[key] = setting.default
     }
     return acc
-  }, {})
+  }, {} as Record<string, any>)
 )
 
 const [isVisible, setIsVisible] = useState(false)
@@ -28,7 +28,7 @@ const [isVisible, setIsVisible] = useState(false)
         <Pressable className='bg-white w-4/5 max-w-[800] rounded-md p-4 items-center' onPress={() => {}}>
           <Text className='text-3xl font-bold p-2'>{name}</Text>
          <View className='items-center mt-4 mb-4 w-full'>
-            {Object.entries(games[name].game_setup).map(([key,setting]) => (
+            {Object.entries(games[name].game_setup).map(([key,setting]: [string, any]) => (
               <View key={key} className='flex-row justify-between items-center w-full p-2 m-2'>
                 <Text className='text-xl'>{setting.label}</Text>
                 {setting.values ? (

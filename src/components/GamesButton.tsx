@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Pressable, Text } from 'react-native';
-import { useTheme } from '../context/ThemeContext';
-import GameSetModal from './GameSetModal';
+import React, { useState } from 'react'
+import { Pressable, Text } from 'react-native'
+import { useTheme } from '../context/ThemeContext'
+import GameSetModal from './GameSetModal'
 
 export default function GamesButton({ label }: { label: string }) {
-  const { theme } = useTheme();
+  const { theme } = useTheme()
   const [isVisible, setIsVisible] = useState(false)
 
   return (

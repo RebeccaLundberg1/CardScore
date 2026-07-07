@@ -1,6 +1,6 @@
-import { Pressable, Text, View, Modal } from 'react-native';
-import { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Pressable, Text, View, Modal } from 'react-native'
+import { useState } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 export default function Dropdown({ data, value, onValueChange }: { data: any[] ,value: any , onValueChange: (val: any) => void }) {
