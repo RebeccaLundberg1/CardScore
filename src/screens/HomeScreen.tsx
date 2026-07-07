@@ -5,14 +5,17 @@ import GamesButton from '../components/GamesButton'
 import { useTheme } from '../context/ThemeContext'
 import games from '../data/games.json'
 
+/*
+* Reder the first page you meet when you open the app.
+*/ 
 export default function HomeScreen() {
   const { theme, toggleTheme, isDark } = useTheme()
-
   const notebookImage = require('../../assets/images/notebook.png')
 
   return (
     <SafeAreaView className='flex-1' style={{ backgroundColor: theme.bg }}>
       <View className='flex-row justify-end'>
+        {/* Switch to alter between color theme light and dark */}
         <Switch className='m-4'
           value={isDark}
           trackColor={{ false: theme.secondary, true: theme.secondary }}

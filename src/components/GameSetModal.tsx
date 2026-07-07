@@ -1,13 +1,19 @@
 import { Modal, View, Text, Pressable, Switch } from 'react-native'
-import chigago from '../data/chicago.json'
-import plump from '../data/plump.json'
 import { useState } from 'react'
 import RulesModal from './RulesModal'
 import Dropdown from './Dropdown'
 import { useTheme } from '../context/ThemeContext'
+//Settings for games
+import chigago from '../data/chicago.json'
+import plump from '../data/plump.json'
 
+/*
+* Pop-up modal for the user to be able to make some settings before start the new game
+* @param name - The name of the game
+* @param visible - Controls whether the modal is shown or not
+* @param onClose - Function to close the modal 
+*/
 export default function GameSetModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
-  //Holds the light/dark color theme of app
   const { theme } = useTheme()
 
   //Sort out the correct .json to render correct gameSetModal
@@ -16,6 +22,7 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
     "Plump": plump
   }
 
+  // Loops through game_setup and builds an object of default values for each setting
   const [ settings, setSettings ] = useState(
     Object.entries(games[name].game_setup).reduce((acc, [key, setting]: [string, any]) => {
       if (setting.default !== undefined) { 
@@ -36,6 +43,7 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
           onPress={() => {}}
         >
           <Text className='text-3xl font-bold p-2' style={{ color: theme.text }}>{name}</Text>
+          {/* Loop and shows the settings for the game */}
          <View className='items-center mt-4 mb-4 w-full'>
             {Object.entries(games[name].game_setup).map(([key,setting]: [string, any]) => (
               <View key={key} className='flex-row justify-between items-center w-full p-2 m-2'>
