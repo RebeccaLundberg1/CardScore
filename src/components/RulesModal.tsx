@@ -1,5 +1,6 @@
 import { Modal, View, Text, Pressable, ScrollView } from 'react-native'
 import { chicagoRules } from '../data/chicagoRules'
+import { plumpRules } from '../data/plumpRules'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Markdown from 'react-native-markdown-display'
 
@@ -12,7 +13,8 @@ import Markdown from 'react-native-markdown-display'
 export default function RulesModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
 
   const games: Record<string, string> = {
-    "Chicago": chicagoRules
+    "Chicago": chicagoRules,
+    "Plump": plumpRules
   }
 
   return (

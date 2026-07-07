@@ -1,5 +1,6 @@
 import { Modal, View, Text, Pressable, Switch } from 'react-native'
 import chigago from '../data/chicago.json'
+import plump from '../data/plump.json'
 import { useState } from 'react'
 import RulesModal from './RulesModal'
 import Dropdown from './Dropdown'
@@ -7,7 +8,8 @@ import Dropdown from './Dropdown'
 export default function GameSetModal({ name, visible, onClose }: { name: string, visible: boolean, onClose: () => void }) {
   
 const games: Record<string, any> = {
-    "Chicago": chigago
+    "Chicago": chigago,
+    "Plump": plump
   }
 
 const [ settings, setSettings ] = useState(

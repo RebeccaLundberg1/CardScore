@@ -1,23 +1,23 @@
 {
-  "id": "chicago",
-  "name": "Chicago",
+  "id": "plump",
+  "name": "Plump",
   "game_setup": {
     "players": {
       "label": "Antal spelare",
-      "values": [2, 3, 4, 5, 6],
+      "values": [2, 3, 4, 5],
       "default": 2
     },
-    "swaps": {
-      "label": "Antal byten",
-      "values": [2, 3],
-      "default": 2
+    "num_cards_start": {
+      "label": "Antal startkort",
+      "values": [10, 8, 6],
+      "default": 10
     },
-    "pitfalls": {
-      "label": "Fallgropar",
+    "up_down": {
+      "label": "Upp och ner",
       "default": true
     },
-    "purch_stop": {
-      "label": "Köpstopp",
+    "traficlight": {
+      "label": "Trafikljus",
       "default": true
     }
   },
