@@ -79,7 +79,7 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
           <Pressable 
             className='items-center justify-center w-3/5 m-2 rounded-md px-4 py-2'
             style={{ backgroundColor: theme.button_two }}
-            onPress={() => { navigation.navigate('Game'); onClose() }}
+            onPress={() => { navigation.navigate('Game', { settings, name }); onClose() }}
           >
             <Text className='text-2xl font-semibold' style={{ color: theme.text }}>Starta spel</Text>
           </Pressable>
