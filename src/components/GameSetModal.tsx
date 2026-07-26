@@ -3,7 +3,8 @@ import { useState } from 'react'
 import RulesModal from './RulesModal'
 import Dropdown from './Dropdown'
 import { useTheme } from '../context/ThemeContext'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from '../../App'
 //Settings for games
 import chigago from '../data/chicago.json'
 import plump from '../data/plump.json'
@@ -34,7 +35,7 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
   )
 
   const [isVisible, setIsVisible] = useState(false)
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   
   return (
     <Modal visible={visible} onRequestClose={onClose} transparent animationType='fade'>

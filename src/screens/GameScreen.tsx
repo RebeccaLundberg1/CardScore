@@ -1,26 +1,32 @@
-import { View, Text, Modal, Pressable, FlatList } from 'react-native'
+import { View, Text, Pressable, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../context/ThemeContext'
 import { StatusBar } from 'expo-status-bar'
 import { useRoute } from '@react-navigation/native'
 import { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
 import RulesModal from '../components/RulesModal'
 import PlayerView from '../components/PlayerView'
 import NameModal from '../components/NameModal'
+import { RootStackParamList } from '../../App'
 
-
+/*
+* The sceen showed in game mode. Access rules, players and their points. 
+*/
 export default function GameScreen() {
 
-  const { theme } = useTheme() 
+  const { theme } = useTheme()
+  
+  /* Used to get access to information send from HomeScreen */
   const route = useRoute()
   const { settings, name } = route.params as any
+
   const [isVisible, setIsVisible] = useState(false)
   const [nameModalVisible, setNameModalVisible] = useState(true)
   const [gridHeight, setGridHeight] = useState(0)
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   const [ players, setPlayers ] = useState(
-    Array.from({ length: settings.players }, (_, i) => ({
+    Array.from({ length: settings.players }, (_, i) => ({ 
       id: i,
       name: `Spelare ${i + 1}`,
       points: 0
@@ -52,7 +58,7 @@ export default function GameScreen() {
           <Text className='text-3xl font-semibold text-center pt-6 mb-2' style={{ color: theme.text }}>{name}</Text>
           <Pressable 
             className='m-2 px-4 py-2 rounded-md justify-center items-center w-1/3' 
-            onPress={ () => {navigation.navigate('Home')}} //Borde öppna en modal för att vara säker på att avsluta spel?
+            onPress={ () => {navigation.navigate('Home')}}
           >
             <Text className='font-semibold text-xl' style={{ color: theme.text }}>Avsluta</Text>
           </Pressable>
@@ -97,7 +103,6 @@ export default function GameScreen() {
           </Pressable>
         </View>
       </View>
-
       <StatusBar style="auto" />
     </SafeAreaView>
   )

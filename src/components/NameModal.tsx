@@ -3,6 +3,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useTheme } from '../context/ThemeContext'
 import { useState } from 'react'
 
+/*
+* Component to be able to enter name of players. Pops up when entering the gamescreen. 
+* @param players - the number of players in the game
+* @param visible - boolean if the model is shown or not 
+* @param onClose - function that handles whats happening when modal closes. Array with names is returned.
+*/
 export default function NameModal({ players, visible, onClose }: { players: number, visible: boolean, onClose: (names: string[]) => void }) {
 
   const { theme } = useTheme()
@@ -11,7 +17,7 @@ export default function NameModal({ players, visible, onClose }: { players: numb
   ))
 
   return (
-    <Modal visible={visible} onRequestClose={onClose} transparent animationType='fade'>
+    <Modal visible={visible} onRequestClose={() => onClose(names)} transparent animationType='fade'>
       <SafeAreaView className='flex-1 bg-[rgba(0,0,0,0.5)] justify-center items-center'>
         <View 
           className='max-h-[800px] w-4/5 max-w-[800px] rounded-md'
@@ -19,13 +25,16 @@ export default function NameModal({ players, visible, onClose }: { players: numb
         >
           <View className='items-center'>
             <Text className='text-3xl font-bold pb-4 mt-4' style={{ color: theme.text }}>NAMN PÅ SPELARE</Text>
+            {/* Creates an array in size of number of players and loops through to render correct
+                number of textInput-fields. onChangeText makes a copy of names, update correct index and 
+                then updates the names on top */}
             {Array.from({ length: players }, (_, i) => (
               <TextInput
                 key={i}
                 className='h-[40px] w-3/4 rounded-md px-2 text-center text-xl m-2'
                 style={{ paddingVertical: 0, backgroundColor: theme.button_one}}
                 placeholder={`Spelare ${i + 1}`}
-                placeholderTextColor={theme.text}
+                placeholderTextColor={theme.text} 
                 onChangeText={(text) => {
                   const updated = [...names]
                   updated[i] = text
