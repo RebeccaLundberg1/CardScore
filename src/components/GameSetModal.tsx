@@ -3,6 +3,8 @@ import { useState } from 'react'
 import RulesModal from './RulesModal'
 import Dropdown from './Dropdown'
 import { useTheme } from '../context/ThemeContext'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from '../../App'
 //Settings for games
 import chigago from '../data/chicago.json'
 import plump from '../data/plump.json'
@@ -33,7 +35,8 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
   )
 
   const [isVisible, setIsVisible] = useState(false)
-
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
+  
   return (
     <Modal visible={visible} onRequestClose={onClose} transparent animationType='fade'>
       <Pressable className='flex-1 bg-[rgba(0,0,0,0.5)] justify-center items-center' onPress={onClose}>
@@ -69,13 +72,16 @@ export default function GameSetModal({ name, visible, onClose }: { name: string,
           <Pressable 
             className='items-center justify-center w-3/5 m-2 rounded-md px-4 py-2'
             style={{ backgroundColor: theme.button_one }}
-            onPress={() => setIsVisible(true)}>
+            onPress={() => setIsVisible(true)}
+          >
             <Text className='text-2xl font-semibold' style={{ color: theme.text }}>Spelregler</Text>
           </Pressable>
           <RulesModal name={name} visible={isVisible} onClose={() => setIsVisible(false)}/>
           <Pressable 
             className='items-center justify-center w-3/5 m-2 rounded-md px-4 py-2'
-            style={{ backgroundColor: theme.button_two }}>
+            style={{ backgroundColor: theme.button_two }}
+            onPress={() => { navigation.navigate('Game', { settings, name }); onClose() }}
+          >
             <Text className='text-2xl font-semibold' style={{ color: theme.text }}>Starta spel</Text>
           </Pressable>
         </Pressable>
